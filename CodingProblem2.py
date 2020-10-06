@@ -15,13 +15,13 @@ month_list = {
     }
 
 with open('inputDates.txt', 'r') as f:
-    for line in f:
-        if line == '-1':
-            break
-
-            date_split = input_date.split(',')
-            month_day, year = date_split[0], date_split[1]
-            month_split = month_day.split(' ')
-            month, day = month_list[month_split[0]], month_split[1]
-            print('{}/{}/{}'.format(month, day, year))
-
+    with open('parsedDates.txt', 'w') as x:
+        for line in f:
+            if line == '-1':
+                break
+            elif '.' in line:
+                date_split = line.split(',')
+                month_day, year = date_split[0], date_split[1]
+                month_split = month_day.split(' ')
+                month, day = month_list[month_split[0]], month_split[1]
+                print('{}/{}/{}'.format(month, day, year))
